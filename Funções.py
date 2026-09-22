@@ -1,25 +1,25 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def mapaLogistico(x0, a, n=1, nT=0):
+def Mapa(x0, b, n=1, nT=0):
   x = x0
   X = []
   for i in range(-nT,n):
-    x = a*x*(1-x)
+    x = (1-(b*(x**2))
     if i >= 0:
       X.append(x)
   return np.asarray(X)
 #
 
-def LyapunovLogistico( X, a, fPrimeMinimo=1e-10 ):
-  L = np.zeros_like(a)
+def Lyapunov( X, b, fPrimeMinimo=1e-10 ):
+  L = np.zeros_like(b)
   for x in X:
-    fPrime = np.maximum( np.abs(a*(1-2*x)), fPrimeMinimo )
+    fPrime = np.maximum( np.abs(2*b*x), fPrimeMinimo )
     L += np.log(fPrime)
   return L/X.shape[0]
 #
 
-def FazFiguraDiagramaBifurcacao( As, X, L, \
+def FazFiguraDiagramaBifurcacao( Bs, X, L, \
               figsize = None, alpha = 0.1, ylimL = None, \
               corL = 'b', corX = 'k', \
               SHOW = True, DEVOLVE_fig_axs = False, \
@@ -36,7 +36,7 @@ def FazFiguraDiagramaBifurcacao( As, X, L, \
     axs.append( plt.subplot(3,1,3) )
     plt.subplots_adjust(hspace=0.0)
     axs[1].sharex(axs[0])
-    axs[1].set_xlim([min(As), max(As)])
+    axs[1].set_xlim([min(Bs), max(Bs)])
     axs[1].axhline( 0, c='k', lw=0.5 )
 
   # separar entre periódico e caótico
@@ -44,13 +44,13 @@ def FazFiguraDiagramaBifurcacao( As, X, L, \
   Ps = contadorPeriodo( X );
   ondePeriodico = np.flatnonzero( Ps>0 )
   ondeCaotico = np.flatnonzero( Ps==0 )
-  axs[0].plot( As[ondePeriodico], X[:,ondePeriodico].T, ',', c=corX, alpha=1 )
-  axs[0].plot( As[ondeCaotico], X[:,ondeCaotico].T, ',', c=corX, alpha=alpha )
+  axs[0].plot( Bs[ondePeriodico], X[:,ondePeriodico].T, ',', c=corX, alpha=1 )
+  axs[0].plot( Bs[ondeCaotico], X[:,ondeCaotico].T, ',', c=corX, alpha=alpha )
 
-  axs[0].set_xlabel( 'a' )
+  axs[0].set_xlabel( 'b' )
   axs[0].set_ylabel( 'x' )
-  axs[1].plot( As, L, ',', c=corL )
-  axs[1].set_xlabel( 'a' )
+  axs[1].plot( Bs, L, ',', c=corL )
+  axs[1].set_xlabel( 'b' )
   axs[1].set_ylabel( 'L' )
   if ylimL is not None:
     axs[1].set_ylim(ylimL)
