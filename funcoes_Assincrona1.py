@@ -5,7 +5,7 @@ def Mapa(x0, b, n=1, nT=0):
   x = x0
   X = []
   for i in range(-nT,n):
-    x = (1-(b*(x**2))
+    x = (1-(b*(x**2)))
     if i >= 0:
       X.append(x)
   return np.asarray(X)
