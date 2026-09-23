@@ -34,10 +34,9 @@ def FazFiguraDiagramaBifurcacao( Bs, X, L, \
     axs = []
     axs.append( plt.subplot(3,1,(1,2)) )
     axs.append( plt.subplot(3,1,3) )
-    plt.subplots_adjust(hspace=0.0)
+    plt.subplots_adjust(hspace=0.5)
     axs[1].sharex(axs[0])
     axs[1].set_xlim([min(Bs), max(Bs)])
-    axs[1].set_ylim([0.5,-25])  
     axs[1].axhline( 0, c='k', lw=0.5 )
 
   # separar entre periódico e caótico
