@@ -47,7 +47,7 @@ def FazFiguraDiagramaBifurcacao( Bs, X, L, \
   axs[0].plot( Bs[ondePeriodico], X[:,ondePeriodico].T, ',', c=corX, alpha=1 )
   axs[0].plot( Bs[ondeCaotico], X[:,ondeCaotico].T, ',', c=corX, alpha=alpha )
 
-  plt.axhline(y=0., color='k', linestyle='--')              
+  axs[0].axhline (0, c = 'k', linestyle = '--', alpha = 0.5)              
   axs[0].set_xlabel( 'b' )
   axs[0].set_ylabel( 'x' )
   axs[1].plot( Bs, L, ',', c=corL )
