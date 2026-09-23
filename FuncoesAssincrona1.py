@@ -20,7 +20,7 @@ def Lyapunov( X, b, fPrimeMinimo=1e-10 ):
 #
 
 def FazFiguraDiagramaBifurcacao( Bs, X, L, \
-              figsize = None, alpha = 0.1, ylimL = None, \
+              figsize = None, alpha = 0.2, ylimL = None, \
               corL = 'b', corX = 'k', \
               SHOW = True, DEVOLVE_fig_axs = False, \
               fig = None, axs=None ):
@@ -37,7 +37,7 @@ def FazFiguraDiagramaBifurcacao( Bs, X, L, \
     plt.subplots_adjust(hspace=0.5)
     axs[1].sharex(axs[0])
     axs[1].set_xlim([min(Bs), max(Bs)])
-    axs[1].axhline( 0, c='k', lw=0.5 )
+    axs[1].axhline( 0, c='r', lw=0.5 )
 
   # separar entre periódico e caótico
   #axs[0].plot( As, X.T, ',k', alpha=alpha )
