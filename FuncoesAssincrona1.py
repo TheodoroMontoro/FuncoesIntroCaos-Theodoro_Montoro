@@ -37,7 +37,7 @@ def FazFiguraDiagramaBifurcacao( Bs, X, L, \
     plt.subplots_adjust(hspace=0.0)
     axs[1].sharex(axs[0])
     axs[1].set_xlim([min(Bs), max(Bs)])
-    axs[1].axhline( 0, c='k', lw=0.5 )
+    
 
   # separar entre periódico e caótico
   #axs[0].plot( As, X.T, ',k', alpha=alpha )
@@ -47,7 +47,7 @@ def FazFiguraDiagramaBifurcacao( Bs, X, L, \
   axs[0].plot( Bs[ondePeriodico], X[:,ondePeriodico].T, ',', c=corX, alpha=1 )
   axs[0].plot( Bs[ondeCaotico], X[:,ondeCaotico].T, ',', c=corX, alpha=alpha )
 
-  axs[0].axhline (0, c = 'k', linestyle = '--', alpha = 0.5)              
+  axs[0].axhline (0, c = 'c', linestyle = '-', alpha = 1)              
   axs[0].set_xlabel( 'b' )
   axs[0].set_ylabel( 'x' )
   axs[1].plot( Bs, L, ',', c=corL )
