@@ -83,3 +83,28 @@ def contadorPeriodo( X, delta=1e-5, pMax=np.inf, nVerMin=0 ): # Mesmo contador d
     Ps.append( p )
   return np.asarray(Ps)
 #
+
+def CobWeb(x0, N, b ): # Função para a cobewb do mapa utilizada, também baseada na função feita pelo professor em sala de aula
+  def f(x):
+    return (1-b*x**2)
+  plt.figure()
+  xs = np.linspace(-1,1,2_001)
+  plt.plot( xs, f(xs).T, '-m' )
+  plt.plot( xs, xs, '-k' )
+  plt.xlabel( 'x' )
+  plt.ylabel( 'f(x)' )
+  plt.xlim([-1.2,1.2])
+  plt.ylim([-1.2,1.2]) 
+  plt.grid()
+
+  # 1o passo (subir na vertical):
+  plt.plot( [x0,x0], [0, f(x0)], '-r' )
+  xA = x0
+  for _ in range(N):
+    xN = f(xA)
+    # linha horizontal
+    plt.plot( [xA,xN], [xN, xN], '-g' )
+    # linha vertical
+    plt.plot( [xN, xN], [xN, f(xN)], '-b' )
+    xA = xN
+  plt.show()
